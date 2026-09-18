@@ -14,7 +14,7 @@
 
 <p align="center">
 
-  <img src="assets/frontend.png" alt="ASK MYDOCS" width="900"/>
+  <img src="assets/Frontend.png" alt="ASK MYDOCS" width="900"/>
 
 </p>
 
