@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AskMyDocs</title>
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <aside class="sidebar">
+
+    <div>
+      <div class="logo">
+        <i class="fa-solid fa-file-circle-question"></i>
+        Ask<span>MyDocs</span>
+      </div>
+
+      <p class="subtitle">
+        Upload documents and ask questions using AI-powered semantic search.
+      </p>
+    </div>
+
+    <div class="upload-card">
+
+      <h3>
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        Upload Document
+      </h3>
+
+      <input
+        type="file"
+        id="fileInput"
+        accept=".pdf,.docx,.txt"
+      />
+
+      <button class="upload-btn" onclick="uploadFile()">
+        <i class="fa-solid fa-upload"></i>
+        Upload Document
+      </button>
+
+      <p id="uploadStatus" class="status"></p>
+
+    </div>
+
+    <div class="info-box">
+
+      <b>
+        <i class="fa-solid fa-diagram-project"></i>
+        System Flow
+      </b>
+
+      <br>
+
+      <i class="fa-solid fa-file-lines"></i>
+      Document Reading
+
+      <br>
+
+      <i class="fa-solid fa-scissors"></i>
+      Text Chunking
+
+      <br>
+
+      <i class="fa-solid fa-vector-square"></i>
+      Embeddings
+
+      <br>
+
+      <i class="fa-solid fa-database"></i>
+      FAISS Search
+
+      <br>
+
+      <i class="fa-solid fa-robot"></i>
+      Ollama Answer
+
+    </div>
+
+  </aside>
+
+
+  <main class="main">
+
+    <header class="header">
+
+      <div class="header-title">
+        <i class="fa-solid fa-comments"></i>
+        AskMyDocs Assistant
+      </div>
+
+      <div class="badge">
+        <i class="fa-solid fa-server"></i>
+        FastAPI Connected
+      </div>
+
+    </header>
+
+
+    <section class="chat-box" id="chatBox">
+
+      <div class="welcome">
+
+        <h1>Ask your documents anything</h1>
+
+        <p>
+          AskMyDocs retrieves the most relevant content from your document
+          and generates a clean answer using AI.
+        </p>
+
+      </div>
+
+
+      <div class="message bot">
+
+        <div class="avatar bot-avatar">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+
+        <div class="bubble">
+          Hello! Upload your document first, then ask me anything from it.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <div class="input-wrapper">
+
+      <div class="input-area">
+
+        <input
+          type="text"
+          id="questionInput"
+          placeholder="Ask a question from your document..."
+          onkeydown="handleEnter(event)"
+        />
+
+        <button class="send-btn" onclick="askQuestion()">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
