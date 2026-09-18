@@ -1,0 +1,33 @@
+credentials/
+token.json
+sync_state.json
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local uploaded documents
+storage/uploads/
+
+# Generated / local data
+storage/faiss/
+storage/metadata/
+
+# Logs
+*.log
+
