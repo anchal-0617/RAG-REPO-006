@@ -1,9 +1,9 @@
 from fastapi import APIRouter
-from app.models.request_models import QuestionRequest
-from app.services.query_classifier import classify_query
-from app.services.retrieval_service import retrieve_relevant_chunks
-from app.services.answer_service import generate_answer
-from app.services.summary_service import generate_summary
+from Backend.models.request_models import QuestionRequest
+from Backend.services.query_classifier import classify_query
+from Backend.services.retrieval_service import retrieve_relevant_chunks
+from Backend.services.answer_service import generate_answer
+from Backend.services.summary_service import generate_summary
 
 router = APIRouter()
 

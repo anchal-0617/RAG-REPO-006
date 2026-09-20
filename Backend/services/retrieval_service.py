@@ -1,6 +1,6 @@
-from app.services.embedding_service import create_query_embedding
-from app.services.faiss_service import get_index, get_chunks, get_metadata, search_query
-from app.services.reranker_service import rerank_chunks
+from Backend.services.embedding_service import create_query_embedding
+from Backend.services.faiss_service import get_index, get_chunks, get_metadata, search_query
+from Backend.services.reranker_service import rerank_chunks
 
 def retrieve_relevant_chunks(question: str, k: int = 7):
     index = get_index()

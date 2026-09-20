@@ -1,5 +1,5 @@
 from langchain_ollama import OllamaLLM
-from app.services.faiss_service import get_chunks
+from Backend.services.faiss_service import get_chunks
 
 llm = OllamaLLM(model="llama3.2:3b")
 

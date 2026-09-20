@@ -9,15 +9,15 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
 
-from app.services.extractor import extract_text
-from app.services.chunker import chunk_text
-from app.services.embedding_service import create_embeddings
-from app.services.faiss_service import (
+from Backend.services.extractor import extract_text
+from Backend.services.chunker import chunk_text
+from Backend.services.embedding_service import create_embeddings
+from Backend.services.faiss_service import (
     create_faiss_index,
     store_chunks,
     store_index
 )
-from app.services.metadata_service import create_metadata
+from Backend.services.metadata_service import create_metadata
 
 router = APIRouter()
 
