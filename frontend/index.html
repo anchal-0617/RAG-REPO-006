@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>AskMyDocs</title>
 
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
@@ -26,11 +30,12 @@
       </p>
     </div>
 
+
     <div class="upload-card">
 
       <h3>
         <i class="fa-solid fa-cloud-arrow-up"></i>
-        Upload Document
+        Add Documents
       </h3>
 
       <input
@@ -39,14 +44,42 @@
         accept=".pdf,.docx,.txt"
       />
 
-      <button class="upload-btn" onclick="uploadFile()">
+      <button
+        class="upload-btn"
+        onclick="uploadFile()"
+      >
         <i class="fa-solid fa-upload"></i>
         Upload Document
       </button>
 
-      <p id="uploadStatus" class="status"></p>
+
+      <div class="or-divider">
+        <span>OR</span>
+      </div>
+
+
+      <button
+        class="drive-btn"
+        onclick="syncGoogleDrive()"
+      >
+        <i class="fa-brands fa-google-drive"></i>
+        Sync Google Drive
+      </button>
+
+
+      <p
+        id="uploadStatus"
+        class="status"
+      ></p>
+
+
+      <p
+        id="driveStatus"
+        class="status"
+      ></p>
 
     </div>
+
 
     <div class="info-box">
 
@@ -55,27 +88,27 @@
         System Flow
       </b>
 
-      <br>
+      <br />
 
       <i class="fa-solid fa-file-lines"></i>
       Document Reading
 
-      <br>
+      <br />
 
       <i class="fa-solid fa-scissors"></i>
       Text Chunking
 
-      <br>
+      <br />
 
       <i class="fa-solid fa-vector-square"></i>
       Embeddings
 
-      <br>
+      <br />
 
       <i class="fa-solid fa-database"></i>
       FAISS Search
 
-      <br>
+      <br />
 
       <i class="fa-solid fa-robot"></i>
       Ollama Answer
@@ -102,11 +135,16 @@
     </header>
 
 
-    <section class="chat-box" id="chatBox">
+    <section
+      class="chat-box"
+      id="chatBox"
+    >
 
       <div class="welcome">
 
-        <h1>Ask your documents anything</h1>
+        <h1>
+          Ask your documents anything
+        </h1>
 
         <p>
           AskMyDocs retrieves the most relevant content from your document
@@ -123,7 +161,8 @@
         </div>
 
         <div class="bubble">
-          Hello! Upload your document first, then ask me anything from it.
+          Hello! Upload your document or sync Google Drive,
+          then ask me anything from it.
         </div>
 
       </div>
@@ -142,7 +181,10 @@
           onkeydown="handleEnter(event)"
         />
 
-        <button class="send-btn" onclick="askQuestion()">
+        <button
+          class="send-btn"
+          onclick="askQuestion()"
+        >
           <i class="fa-solid fa-paper-plane"></i>
         </button>
 
@@ -153,7 +195,8 @@
   </main>
 
 
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 
 </body>
+
 </html>

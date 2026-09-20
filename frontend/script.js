@@ -71,19 +71,12 @@ async function uploadFile() {
 
   try {
 
-    console.log("BASE_URL =", BASE_URL);
-    console.log("About to fetch...");
-
     const res = await fetch(BASE_URL + "/upload-doc", {
       method: "POST",
       body: formData
     });
 
-    console.log("Response Status:", res.status);
-
     const data = await res.json();
-
-    console.log("Response:", data);
 
     if (!res.ok || data.error) {
 
@@ -117,6 +110,73 @@ async function uploadFile() {
 }
 
 
+async function syncGoogleDrive() {
+
+  const driveStatus = document.getElementById("driveStatus");
+
+  driveStatus.className = "status";
+
+  driveStatus.innerHTML =
+    '<i class="fa-solid fa-spinner fa-spin"></i> Connecting to Google Drive...';
+
+  try {
+
+    const res = await fetch(BASE_URL + "/sync-drive", {
+      method: "POST"
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+
+      driveStatus.className = "status error";
+
+      driveStatus.innerHTML =
+        '<i class="fa-solid fa-circle-xmark"></i> Google Drive sync failed.';
+
+      return;
+    }
+
+    if (data.message === "Incremental sync completed") {
+
+      driveStatus.className = "status success";
+
+      driveStatus.innerHTML =
+        '<i class="fa-solid fa-circle-check"></i> Google Drive synchronized successfully.<br>' +
+        "New: " + data.new_files +
+        " | Changed: " + data.changed_files +
+        " | Skipped: " + data.skipped_files +
+        " | Chunks: " + data.chunks;
+
+      addMessage(
+        "Google Drive synchronized successfully. " +
+        data.new_files + " new files, " +
+        data.changed_files + " changed files, and " +
+        data.skipped_files + " unchanged files were processed.",
+        "bot"
+      );
+
+    } else {
+
+      driveStatus.className = "status success";
+
+      driveStatus.innerHTML =
+        '<i class="fa-solid fa-circle-check"></i> ' +
+        data.message;
+    }
+
+  } catch (error) {
+
+    console.error(error);
+
+    driveStatus.className = "status error";
+
+    driveStatus.innerHTML =
+      '<i class="fa-solid fa-circle-xmark"></i> Google Drive connection failed.';
+  }
+}
+
+
 async function askQuestion() {
 
   const input = document.getElementById("questionInput");
@@ -144,6 +204,7 @@ async function askQuestion() {
       body: JSON.stringify({
         question: question
       })
+
     });
 
     const data = await res.json();
@@ -166,7 +227,7 @@ async function askQuestion() {
 
   } catch (error) {
 
-    console.log(error);
+    console.error(error);
 
     loadingBubble.innerHTML =
       "Unable to connect with backend.";
@@ -179,4 +240,5 @@ function handleEnter(event) {
   if (event.key === "Enter") {
     askQuestion();
   }
+
 }
